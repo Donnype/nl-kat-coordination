@@ -125,10 +125,8 @@ jobs:
           merge-multiple: true
           pattern: kat-*_ubuntu22.04.deb
 
-      - name: Download cve api asset
-        uses: actions/download-artifact@v4
-        with:
-          name: kat-cveapi_${{ env.RELEASE_VERSION }}_debian12.deb
+      - name: Move cve-api asset to add it as a separate artifact 
+        run: mv kat-debian12-${{ env.RELEASE_VERSION }}/kat-cveapi_${{ env.RELEASE_VERSION }}_all.deb .
 
       - name: Bundle assets
         run: |
